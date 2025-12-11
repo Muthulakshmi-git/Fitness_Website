@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainers</title>
+    <!-- Icon -->
+    <link rel="shortcut icon" href="./Images/running.png" type="image/x-icon">
+    <!-- Tailwind css link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <!-- Font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body class="bg-gray-100">
+<!-- Navbar -->
+     <div id="navbar" class="text-white text-sm font-bold absolute top-10 right-10 z-20 block ">
+        <ul class="flex gap-5 items-center">
+          <li class="cursor-pointer hover:text-yellow-600"><a href="./index.html">HOME</a></li>
+            <li class="cursor-pointer hover:text-yellow-600"><a href="./workout.html">WORKOUT</a></li>
+            <li class="cursor-pointer hover:text-yellow-600"><a href="./trainer.html">TRAINERS</a></li>
+            <li class="cursor-pointer hover:text-yellow-600"><a href="./bmi.html">BMI</a></li>
+            <li class="cursor-pointer hover:text-yellow-600"><a href="./subscription.html">SUBSCRIPTION</a></li>
+        </ul>
+    </div>
+<!-- HEADER -->
+<header class="bg-black text-white text-center py-12">
+    <h1 class="text-4xl font-bold">Meet Our Trainers</h1>
+    <p class="text-gray-300 mt-3">Choose your coach & start your journey</p>
+</header>
+
+<!-- FILTER BUTTONS -->
+<div class="max-w-5xl mx-auto mt-10 flex flex-wrap justify-center gap-4">
+    <button onclick="filterTrainers('all')" 
+            class="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800">All</button>
+
+    <button onclick="filterTrainers('strength')" 
+            class="px-6 py-2 bg-white shadow rounded-lg hover:bg-gray-200">Strength</button>
+
+    <button onclick="filterTrainers('yoga')" 
+            class="px-6 py-2 bg-white shadow rounded-lg hover:bg-gray-200">Yoga</button>
+
+    <button onclick="filterTrainers('hiit')" 
+            class="px-6 py-2 bg-white shadow rounded-lg hover:bg-gray-200">HIIT</button>
+</div>
+
+<!-- TRAINER  -->
+<section id="trainerGrid" 
+         class="max-w-7xl mx-auto px-6 py-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+    <!-- Trainer Card -->
+    <div class="trainer-card strength bg-white rounded-xl shadow p-6 hover:-translate-y-2 transition cursor-pointer"
+         onclick="openModal('John Carter', 'Strength Coach', './Images/trainer1.jpg')">
+        <img src="./Images/trainer1.jpg" class="rounded-lg h-72 w-full object-cover">
+        <h3 class="text-2xl font-semibold mt-5">John Carter</h3>
+        <p class="text-gray-500 text-sm">Strength & Conditioning Coach</p>
+    </div>
+
+    <!-- Trainer Card -->
+    <div class="trainer-card yoga bg-white rounded-xl shadow p-6 hover:-translate-y-2 transition cursor-pointer"
+         onclick="openModal('Emily Johnson', 'Yoga Expert', './Images/trainer2.jpg')">
+        <img src="./Images/trainer2.jpg" class="rounded-lg h-72 w-full object-cover">
+        <h3 class="text-2xl font-semibold mt-5">Emily Johnson</h3>
+        <p class="text-gray-500 text-sm">Yoga & Mobility Expert</p>
+    </div>
+
+    <!-- Trainer Card -->
+    <div class="trainer-card hiit bg-white rounded-xl shadow p-6 hover:-translate-y-2 transition cursor-pointer"
+         onclick="openModal('Michael Lee', 'HIIT & Fitness', './Images/trainer3.jpg')">
+        <img src="./Images/trainer3.jpg" class="rounded-lg h-72 w-full object-cover">
+        <h3 class="text-2xl font-semibold mt-5">Michael Lee</h3>
+        <p class="text-gray-500 text-sm">HIIT / Personal Trainer</p>
+    </div>
+
+     <!-- Trainer Card -->
+    <div class="trainer-card strength bg-white rounded-xl shadow p-6 hover:-translate-y-2 transition cursor-pointer"
+         onclick="openModal('Paris', 'Cardio Trainer', './Images/trainer4.jpg')">
+        <img src="./Images/trainer4.jpg" class="rounded-lg h-72 w-full object-cover">
+        <h3 class="text-2xl font-semibold mt-5">Paris</h3>
+        <p class="text-gray-500 text-sm">Cardio Trainer</p>
+    </div>
+
+     <!-- Trainer Card -->
+    <div class="trainer-card hiit bg-white rounded-xl shadow p-6 hover:-translate-y-2 transition cursor-pointer"
+         onclick="openModal('Manchi Shwa', 'HIIT & Fitness', './Images/trainer5.jpg')">
+        <img src="./Images/trainer5.jpg" class="rounded-lg h-72 w-full object-cover">
+        <h3 class="text-2xl font-semibold mt-5">Manchi Shwa</h3>
+        <p class="text-gray-500 text-sm">HIIT / Personal Trainer</p>
+    </div>
+
+     <!-- Trainer Card -->
+    <div class="trainer-card yoga bg-white rounded-xl shadow p-6 hover:-translate-y-2 transition cursor-pointer"
+         onclick="openModal('Adam Cat', 'Mobility Expert / Personal Trainer', './Images/trainer6.jpg')">
+        <img src="./Images/trainer6.jpg" class="rounded-lg h-72 w-full object-cover">
+        <h3 class="text-2xl font-semibold mt-5">Adam cat</h3>
+        <p class="text-gray-500 text-sm">Mobility Expert / Personal Trainer</p>
+    </div>
+</section>
+
+<!-- MODAL -->
+<div id="trainerModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+    <div class="bg-white w-96 p-2 my-10 rounded-xl relative animate-fadeIn">
+
+        <!-- Close Button -->
+        <button onclick="closeModal()" class="absolute top-3 right-3 text-5xl font-bold text-white">
+            &times;
+        </button>
+
+        <!-- Trainer Info -->
+        <img id="modalImg" class="rounded-lg h-56 w-full object-cover">
+        <h2 id="modalName" class="text-2xl font-bold mt-4"></h2>
+        <p id="modalRole" class="text-gray-500 mt-1"></p>
+
+        <!-- Booking Form -->
+        <h3 class="text-lg font-semibold mt-0">Book a Session</h3>
+
+        <form class="mt-3">
+            <label class="text-sm">Your Name</label>
+            <input type="text" class="w-full mt-1 mb-3 p-2 border rounded-lg" placeholder="Enter your name">
+
+            <label class="text-sm">Date</label>
+            <input type="date" class="w-full mt-1 mb-3 p-2 border rounded-lg">
+
+            <label class="text-sm">Time</label>
+            <input type="time" class="w-full mt-1 mb-3 p-2 border rounded-lg">
+
+            <button type="button" id="bookbtn" class="w-full bg-black text-white py-2 rounded-lg mt-2 hover:bg-gray-800">
+                Confirm Booking
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- JS -->
+<script>
+/* FILTER FUNCTION */
+function filterTrainers(category) {
+    const cards = document.querySelectorAll(".trainer-card");
+    cards.forEach(card => {
+        if (category === "all") card.classList.remove("hidden");
+        else card.classList.toggle("hidden", !card.classList.contains(category));
+    });
+}
+
+/* OPEN MODAL */
+function openModal(name, role, img) {
+    document.getElementById("modalName").innerText = name;
+    document.getElementById("modalRole").innerText = role;
+    document.getElementById("modalImg").src = img;
+    document.getElementById("trainerModal").classList.remove("hidden");
+}
+
+/* CLOSE MODAL */
+function closeModal() {
+    document.getElementById("trainerModal").classList.add("hidden");
+}
+
+// Submit Button
+var bookbtn = document.getElementById("bookbtn");
+bookbtn.addEventListener("click",()=>{
+    alert("Submitted Succesfully! We contact you in 10 minutes");
+})
+</script>
+
+</body>
+</html>

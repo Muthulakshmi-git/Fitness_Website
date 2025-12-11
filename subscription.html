@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker Subscription</title>
+    <!-- Link for icon -->
+    <link rel="shortcut icon" href="./Images/running.png" type="image/x-icon">
+    <!-- Link for tailwindcss -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-black text-white p-4 font-bold flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Fitness Tracker</h1>
+        <ul class="flex gap-6">
+            <li><a href="./index.html" class="hover:text-yellow-500">Home</a></li>
+            <li><a href="./workout.html" class="hover:text-yellow-500">Workout</a></li>
+            <li><a href="./trainer.html" class="hover:text-yellow-500">Trainers</a></li>
+            <li><a href="./bmi.html" class="hover:text-yellow-500">BMI</a></li>
+            <li><a href="./subscription.html" class="hover:text-yellow-500 ">Subscription</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="text-center py-16 bg-gradient-to-r from-green-400 to-blue-500 text-white">
+        <h2 class="text-4xl font-bold mb-4">Choose Your Fitness Plan</h2>
+        <p class="text-lg">Stay consistent, stay healthy, and reach your fitness goals</p>
+    </header>
+
+    <!-- Subscription Plans -->
+    <main class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mt-12 px-4">
+        <!-- Basic Plan -->
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:scale-105 transform transition">
+            <h3 class="text-2xl font-bold mb-4">Basic</h3>
+            <p class="text-gray-600 mb-4">Perfect for beginners</p>
+            <p class="text-4xl font-bold mb-4">1099<span class="text-lg font-normal">/month</span></p>
+            <ul class="mb-6 text-left">
+                <li>🏋️ Access to gym equipment</li>
+                <li>📅 3 workouts per week</li>
+                <li>💬 Basic trainer support</li>
+            </ul>
+            <button class="subscribeBtn bg-green-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-600"
+                data-plan="Basic" data-price="19">Subscribe</button>
+        </div>
+
+        <!-- Standard Plan -->
+        <div
+            class="bg-white rounded-xl shadow-lg p-8 text-center border-4 border-green-500 hover:scale-105 transform transition">
+            <h3 class="text-2xl font-bold mb-4">Standard</h3>
+            <p class="text-gray-600 mb-4">For regular fitness enthusiasts</p>
+            <p class="text-4xl font-bold mb-4">1499<span class="text-lg font-normal">/month</span></p>
+            <ul class="mb-6 text-left">
+                <li>🏋️ Unlimited gym access</li>
+                <li>📅 5 workouts per week</li>
+                <li>💬 Priority trainer support</li>
+                <li>🍎 Nutrition guidance</li>
+            </ul>
+            <button class="subscribeBtn bg-green-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-600"
+                data-plan="Standard" data-price="39">Subscribe</button>
+        </div>
+
+        <!-- Premium Plan -->
+        <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:scale-105 transform transition">
+            <h3 class="text-2xl font-bold mb-4">Premium</h3>
+            <p class="text-gray-600 mb-4">For serious fitness goals</p>
+            <p class="text-4xl font-bold mb-4">1999<span class="text-lg font-normal">/month</span></p>
+            <ul class="mb-6 text-left">
+                <li>🏋️ Unlimited gym & classes</li>
+                <li>📅 Personal trainer sessions</li>
+                <li>💬 24/7 trainer support</li>
+                <li>🍎 Personalized nutrition plan</li>
+                <li>📈 Progress tracking</li>
+            </ul>
+            <button class="subscribeBtn bg-green-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-600"
+                data-plan="Premium" data-price="59">Subscribe</button>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+        <div class="bg-white p-8 rounded-xl text-center w-80">
+            <h3 class="text-2xl font-bold mb-4">Subscription Confirmed!</h3>
+            <p id="confirmationText" class="mb-6"></p>
+            <button id="closeModal"
+                class="bg-green-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-600">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white text-center py-6 mt-16">
+        <p>© 2025 Fitness Tracker. All rights reserved.</p>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Select all subscribe buttons
+        const subscribeButtons = document.querySelectorAll('.subscribeBtn');
+        const modal = document.getElementById('confirmationModal');
+        const confirmationText = document.getElementById('confirmationText');
+        const closeModal = document.getElementById('closeModal');
+
+        subscribeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const plan = button.getAttribute('data-plan');
+                const price = button.getAttribute('data-price');
+                confirmationText.textContent = `You have selected the ${plan} plan for $${price}/month. Thank you for subscribing!`;
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+    </script>
+</body>
+
+</html>
